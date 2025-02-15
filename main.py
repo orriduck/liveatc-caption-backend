@@ -29,3 +29,6 @@ async def create_item(item: Item):
             'item': item.model_dump_json()
             }
 
+@app.patch('/item')
+async def update_item(item: Item):
+    return True
