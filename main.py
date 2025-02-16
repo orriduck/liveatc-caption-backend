@@ -1,8 +1,10 @@
 from fastapi import FastAPI, HTTPException, __version__
 from fastapi.middleware.cors import CORSMiddleware
+from metar import Metar
 
 from database import Database
 from models.airport import Airport
+from models.metar_text import MetarText
 from utils.liveatc_crawler import LiveATCCrawler
 
 db = Database()
@@ -110,3 +112,8 @@ async def update_airport(icao: str):
         raise HTTPException(
             status_code=500, detail=f"Error updating airport information: {str(e)}"
         )
+    
+@app.post('/metar')
+async def add_metar(request: MetarText):
+    print(request)
+    return Metar.Metar(request.query)
