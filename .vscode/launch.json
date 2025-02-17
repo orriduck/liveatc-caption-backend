@@ -15,6 +15,17 @@
             ],
             "jinja": true,
             "envFile": "${workspaceFolder}/.env.local"
-        }
+        },
+        {
+            "name": "DB Update",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "package.db_migration.run_migrations",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "envFile": "${workspaceFolder}/.env.local"
+        },
     ]
 }
